@@ -11,9 +11,7 @@ const Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          AI Video Analyzer
-        </a>
+        <NavLink to="/">AI Video Analyzer</NavLink>
         <button
           className="navbar-toggler"
           type="button"
