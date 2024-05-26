@@ -6,7 +6,6 @@ const Nav = () => {
   const { isLoggedIn } = useContext(AuthContext);
   const logout = async () => {
     const auth = getAuth();
-    alert("HELLO");
     await signOut(auth);
   };
   return (
