@@ -10,13 +10,13 @@ import AuthProvider from "./context/auth.context.jsx";
 import { initializeApp } from "firebase/app";
 import Video from "./pages/Video.jsx";
 import Protected from "./components/Protected.jsx";
-import Error from "./pages/Error.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <Error />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
