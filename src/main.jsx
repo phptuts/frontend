@@ -9,11 +9,14 @@ import Videos from "./pages/Videos.jsx";
 import AuthProvider from "./context/auth.context.jsx";
 import { initializeApp } from "firebase/app";
 import Video from "./pages/Video.jsx";
+import Protected from "./components/Protected.jsx";
+import Error from "./pages/Error.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -21,14 +24,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/upload",
-        element: <Upload />,
+        element: (
+          <Protected>
+            <Upload />
+          </Protected>
+        ),
       },
       {
         path: "/videos",
-        element: <Videos />,
-      },{
+        element: (
+          <Protected>
+            <Videos />
+          </Protected>
+        ),
+      },
+      {
         path: "/videos/:videoId",
-        element: <Video />,
+        element: (
+          <Protected>
+            <Video />
+          </Protected>
+        ),
       },
     ],
   },
@@ -38,9 +54,9 @@ const firebaseConfig = {
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId:import.meta.env.VITE_FIREBASE_MESSAGE_SENDER_ID,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGE_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 initializeApp(firebaseConfig);
